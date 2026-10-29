@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playwright Comprehensive Locator Arena</title>
+    <style>
+        :root { --primary: #0284c7; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; max-width: 1300px; margin: 0 auto; }
+        h1 { text-align: center; color: var(--primary); margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--card); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .card h2 { font-size: 1.15rem; margin-top: 0; color: #334155; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem; }
+        input[type="text"], input[type="password"], select, textarea { width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+        button:hover { opacity: 0.9; }
+        .feedback { display: none; margin-top: 0.75rem; color: #16a34a; font-weight: bold; font-size: 0.9rem; text-align: center; }
+        .feedback.error { color: #e11d48; }
+        
+        /* CSS / XPath target structures */
+        .custom-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+        .custom-table th, .custom-table td { border: 1px solid #e2e8f0; padding: 0.5rem; text-align: left; font-size: 0.85rem; }
+        .custom-table tr:nth-child(even) { background: #f8fafc; }
+        .dynamic-list-item { padding: 0.5rem; border-left: 4px solid #0284c7; background: #f0f9ff; margin-bottom: 0.5rem; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <h1>Playwright Comprehensive Locator Arena</h1>
+    
+    <div class="grid">
+        
+        <!-- SECTION A: Core Playwright Built-in Locators -->
+        <div class="card">
+            <h2>1. Core Playwright Locators Part I</h2>
+            
+            <!-- getByRole -->
+            <div class="form-group">
+                <label>getByRole Sandbox:</label>
+                <button type="button" aria-label="Submit Main Form">Execute Action</button>
+            </div>
+
+            <!-- getByLabel -->
+            <div class="form-group">
+                <label for="user-email-address">Email Address (getByLabel Target)</label>
+                <input type="text" id="user-email-address" placeholder="Not used for matching">
+            </div>
+
+            <!-- getByPlaceholder -->
+            <div class="form-group">
+                <label>getByPlaceholder Sandbox:</label>
+                <input type="text" placeholder="Type unique token here...">
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. Core Playwright Locators Part II</h2>
+
+            <!-- getByText -->
+            <div class="form-group">
+                <label>getByText Sandbox:</label>
+                <p>The magic phrase is: <strong>"Automation Is Flawless 2026"</strong></p>
+            </div>
+
+            <!-- getByAltText -->
+            <div class="form-group">
+                <label>getByAltText Sandbox:</label>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='50' height='20'><rect width='50' height='20' fill='%230284c7'/></svg>" alt="Company Logo Corporate Asset" width="100">
+            </div>
+
+            <!-- getByTitle -->
+            <div class="form-group">
+                <label>getByTitle Sandbox:</label>
+                <span title="Detailed system diagnostic tooltip information" style="cursor:help; text-decoration: underline dotted;">Hover or inspect me</span>
+            </div>
+
+            <!-- getByTestId -->
+            <div class="form-group">
+                <label>getByTestId Sandbox:</label>
+                <input type="text" data-testid="secure-token-field" value="TestID-Activated">
+            </div>
+        </div>
+
+        <!-- SECTION B: CSS Selector Targets (Complex Layouts) -->
+        <div class="card">
+            <h2>3. CSS Selectors Arena</h2>
+            <p style="font-size:0.85rem; color:#64748b;">Target elements using hierarchy, attributes, and sibling chains.</p>
+            
+            <!-- Target by: div.data-container > ul > li.active -->
+            <div class="data-container">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Inactive Item A</li>
+                    <li class="active-item-target" style="color: #0284c7; font-weight: bold;">Target Me via CSS Class</li>
+                    <li>Inactive Item B</li>
+                </ul>
+            </div>
+
+            <!-- Target by: input[name="session-status"][disabled] -->
+            <div class="form-group" style="margin-top:1rem;">
+                <label>Attribute Combo Input:</label>
+                <input type="text" name="session-status" value="Read Only System Block" disabled style="background:#f1f5f9;">
+            </div>
+        </div>
+
+        <!-- SECTION C: XPath Targets (Complex Relations / Traversal) -->
+        <div class="card">
+            <h2>4. XPath Selectors Arena</h2>
+            <p style="font-size:0.85rem; color:#64748b;">Target via text substrings, parent relations, or table structure.</p>
+            
+            <!-- Target by: //td[text()='User #104']/following-sibling::td/button -->
+            <table class="custom-table">
+                <thead>
+                    <tr><th>User ID</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>User #102</td><td>Active</td><td><button style="padding:2px 5px; font-size:11px;">Edit</button></td></tr>
+                    <tr><td>User #104</td><td>Suspended</td><td><button onclick="triggerFeedback('xpath-msg')" style="padding:2px 5px; font-size:11px; background:#e11d48;">Unlock</button></td></tr>
+                    <tr><td>User #106</td><td>Active</td><td><button style="padding:2px 5px; font-size:11px;">Edit</button></td></tr>
+                </tbody>
+            </table>
+            <p id="xpath-msg" class="feedback">XPath Interaction successful!</p>
+        </div>
+
+        <!-- SECTION D: Login Form -->
+        <div class="card">
+            <h2>5. Login Form</h2>
+            <form id="login-form" novalidate>
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" name="username" placeholder="Enter username" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Enter password" autocomplete="current-password">
+                </div>
+                <button type="submit" id="login-button">Login</button>
+            </form>
+            <p id="login-success" class="feedback" role="status">Login successful!</p>
+            <p id="login-error" class="feedback error" role="alert">Please enter both username and password.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function triggerFeedback(id) {
+            const el = document.getElementById(id);
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 3000);
+        }
+
+        document.getElementById('login-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const success = document.getElementById('login-success');
+            const error = document.getElementById('login-error');
+
+            if (username && password) {
+                error.style.display = 'none';
+                success.textContent = `Login successful! Welcome, ${username}.`;
+                success.style.display = 'block';
+            } else {
+                success.style.display = 'none';
+                error.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

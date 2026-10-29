@@ -1,0 +1,6 @@
+
+step 1 : Create the new folder with only WebPage/app.html
+            this is the web page were we have diff locator, fields and button.
+
+step 2 : navigate to terminal "npm init playwright@latest"
+            Above command will install the playwright in the folder
